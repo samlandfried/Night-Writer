@@ -5,34 +5,44 @@ require 'minitest/emoji'
 
 class NightWriterTest < Minitest::Test
 
+  def setup
+    nw = NightWriter.new
+    rs = nw.rosetta
+    english = rs[0]
+    braille = rs[1]
+    modifiers = rs[2]
+  end
   describe "rosetta stone" do
 
-
     def test_it_has_3_arrays
-
+      assert english.instance_of? (Array)
+      assert braille.instance_of? (Array)
+      assert modifiers.instance_of? (Array)
     end
 
     def test_braille_sub_arrays_contain_symbols
-
+      assert braille[0][0].instance_of? ("Symbol")
     end
 
     def test_braille_array_contains_arrays
-
+      assert braille[0].instance_of? ("Array")
     end
 
     def test_english_array_contains_strings
+      assert english[0].instance_of? ("String")
     end
 
-    def test_it_creates_capitals
-
+    def test_modifiers_array_contains_symbols
+      assert modifiers[0].instance_of? ("Symbol")
     end
 
     def test_it_matches_characters
-
+      assert_equal "h", english[14]
+      assert_equal [:l,:f,:e], braille[14]
     end
 
     def test_braille_array_has_33_elements
-
+      assert_equal 33, braille.size
     end
 
   end
@@ -99,24 +109,16 @@ class NightWriterTest < Minitest::Test
 
   describe "command line" do
 
-  def test_it_puts
+    def test_it_puts
+    end
+
+    def test_it_does_something_to_a_file_name
+    end
+
+    def test_it_includes_a_character_count
+    end
+
+
   end
-
-  def test_it_does_something_to_a_file_name
-  end
-
-  def test_it_includes_a_character_count
-  end
-
-
-  end
-
-end
-
-
-
-
-end
-
 
 end
