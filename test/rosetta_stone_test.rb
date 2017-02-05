@@ -6,7 +6,7 @@ require 'minitest/emoji'
 class NightWriterTest < Minitest::Test
 
   def setup
-    nw = NightWriter.new
+    nw = NightWriter.new("input.txt", "output.txt")
     rs = nw.rosetta
     english = rs[0]
     braille = rs[1]
@@ -50,13 +50,13 @@ class NightWriterTest < Minitest::Test
   describe "file IO" do
 
     def test_it_produces_a_string
-      file = File.new("file_test.txt", "r")
+      file = File.new("input.txt", "r")
       assert file.instance_of? ("String")
     end
 
     def test_it_makes_a_new_file
       refute File.exist?("fake_file.txt")
-      File.new("fake_file.txt", "w")
+      nw = NightWriter.new("file.txt", "fake_file.txt")
       assert File.exist?("fake_file.txt")
       File.delete("fake_file.txt")
       refute File.exist?("fake_file.txt")
@@ -65,7 +65,7 @@ class NightWriterTest < Minitest::Test
 
   end
 
-  describe "English to Braille translation" do
+  describe "English to Braille translation" do # Sam does this
 
     def test_it_contains_1_row
     end
@@ -87,7 +87,7 @@ class NightWriterTest < Minitest::Test
 
   end
 
-  describe "Braille to English translation" do
+  describe "Braille to English translation" do # Natalie does this
 
     def test_it_contains_3_row
     end
@@ -112,18 +112,19 @@ class NightWriterTest < Minitest::Test
   describe "command line" do
 
     def test_it_includes_a_file_name
-
+      printed = nw.print_output
+      assert printed.include?("output.txt")
     end
 
     def test_it_puts
+      # If there's time, investigte spys
     end
 
-    def test_it_does_something_to_a_file_name
-    end
 
     def test_it_includes_a_character_count
+      printed = nw.print_output
+      assert printed.include?("4")
     end
-
 
   end
 
