@@ -50,14 +50,16 @@ class NightWriterTest < Minitest::Test
   describe "file IO" do
 
     def test_it_produces_a_string
-
+      file = File.new("file_test.txt", "r")
+      assert file.instance_of? ("String")
     end
 
     def test_it_makes_a_new_file
-
-    end
-
-    def test_it_includes_a_file_name
+      refute File.exist?("fake_file.txt")
+      File.new("fake_file.txt", "w")
+      assert File.exist?("fake_file.txt")
+      File.delete("fake_file.txt")
+      refute File.exist?("fake_file.txt")
     end
 
 
@@ -108,6 +110,10 @@ class NightWriterTest < Minitest::Test
   end
 
   describe "command line" do
+
+    def test_it_includes_a_file_name
+
+    end
 
     def test_it_puts
     end
