@@ -90,21 +90,27 @@ class NightWriterTest < Minitest::Test
   describe "Braille to English translation" do # Natalie does this
 
     def test_it_contains_3_row
+      assert_equal 3, translator[0].length
     end
 
     def test_it_outputs_english
+      assert_equal "h", NightWriter.translator[:l, :f, :e]
     end
 
     def test_it_translates_characters
+      assert_equal english[14], NightWriter.translator[:l, :f, :e]
     end
 
     def test_it_capitalizes
+      assert_equal "H", NightWriter.translator[[:e, :e, :r][:l, :f, :e]]
     end
 
     def test_it_finds_errors
+      #look into this later
     end
 
-    def it_counts_characters
+    def test_it_counts_characters
+      assert_equal 1, NightWriter([:l, :f, :e]).length
     end
 
   end
