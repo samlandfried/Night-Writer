@@ -2,7 +2,6 @@ class RosettaStone
 
   # Create 3 arrays as instance variables
     # English alphabet =  " !',-.?abcdefghijklmnopqrstuvwxyz".split('')
-    braille = File.open("lib/braille.txt", "r").read.split("\n")
     # Braille alphabet = braille
     # Modifiers = define from somewhere
 
