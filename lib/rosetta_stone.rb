@@ -8,14 +8,15 @@ class RosettaStone
 
   # Create four symbols :l, :r, :f, :e
 
-  # Recreate Braille alphabet with those symbols
+  # Convert string Braille to symbol braille
   # Make an empty array braille_alphabet
-  # Loop 33 times
+  # Loop lenth of array times
     # create subarr
     # Loop 3 times
       # Look at a pair of dots and assign them a symbol
       # Shovel symbol into array
     # Shovel subarr into braille_alphabet
+
 
   # Push them to an array
 

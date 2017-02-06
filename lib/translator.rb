@@ -1,11 +1,11 @@
 class Translator
 
   def initialize untranslated
-    @untranslated = untranslated # array of braille characters
-    @translated = ""
+
   end
 
   def translate_braille_to_english
+    #untranslated and translated variable
     # An empty array to hold the result
     # Iterate over untranslated
       # Use rosetta_stone to find equivalent value
@@ -13,4 +13,14 @@ class Translator
     # Convert storage into a string
     # Return string
   end
+
+  #translate english to braille
+    #untranslated string
+    #translated = []
+    #Iterate over untranslated
+      #use rosetta_stone to find equivalent value
+      #add value to translated
+    #return translated after iteration
+
+    
 end

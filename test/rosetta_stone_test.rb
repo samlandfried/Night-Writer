@@ -67,9 +67,6 @@ class NightWriterTest < Minitest::Test
 
   describe "English to Braille translation" do # Sam does this
 
-    def test_it_contains_1_row
-    end
-
     def test_it_outputs_braille
     end
 
@@ -88,10 +85,6 @@ class NightWriterTest < Minitest::Test
   end
 
   describe "Braille to English translation" do # Natalie does this
-
-    def test_it_contains_3_row
-      assert_equal 3, translator[0].length
-    end
 
     def test_it_outputs_english
       assert_equal "h", NightWriter.translator[:l, :f, :e]
