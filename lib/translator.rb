@@ -20,7 +20,8 @@ class Translator
     #Iterate over untranslated
       #use rosetta_stone to find equivalent value
       #add value to translated
+    #convert translated back to string braille
     #return translated after iteration
 
-    
+
 end
