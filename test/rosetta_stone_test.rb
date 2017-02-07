@@ -81,14 +81,17 @@ class NightWriterTest < Minitest::Test
   describe "English to Braille translation" do # Sam does this
 
     def test_it_outputs_braille
+      skip
       assert_equal ["..\nO.\nOO"], NightWriter.translator[:l, :f, :e]
     end
 
     def test_it_translates_characters
+      skip
       assert_equal "h", NightWriter.translator(english[14])
     end
 
     def test_it_adds_shift_character
+      skip
       assert_equal ["..O.\n..OO\n.O.."], NightWriter.translator("H")
     end
 
@@ -97,6 +100,7 @@ class NightWriterTest < Minitest::Test
     # end
 
     def it_counts_characters
+      skip
       assert_equal 1, NightWriter.translator("h")
     end
 

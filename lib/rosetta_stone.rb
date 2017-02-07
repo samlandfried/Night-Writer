@@ -4,31 +4,30 @@ class RosettaStone
 
   def initialize
     @english = " !',-.?abcdefghijklmnopqrstuvwxyz".split('')
-    @braille = []
+    @braille = convert_string_braille_to_symbol_braille
     @modifiers = []
     @symbol_braille = [:l, :r, :f, :e]
   end
 
   # Convert string Braille to symbol braille
   def convert_string_braille_to_symbol_braille
-    # Make an empty array braille_alphabet
     file = File.open("./data/braille.txt")
-    # Loop lenth of array times
     braille = file.read.split("\n")
-    33.times do
-
-    end
-      # create subarr
+    converted_braille = []
+    # Loop number of braille pairs times
+    (braille[0].length/2).times do |pair_index_position|
       subarr = []
-      # Loop 3 times
       3.times do |n|
         # Look at a pair of dots and assign them a symbol
-        braille[n][?]
-        # Shovel symbol into array
-      # Shovel subarr into braille_alphabet
+        pair = braille[n][pair_index_position * 2..pair_index_position * 2 + 1]
+        subarr << :l if pair == "0."
+        subarr << :r if pair == ".0"
+        subarr << :e if pair == ".."
+        subarr << :f if pair == "00"
       end
+      converted_braille << subarr
     end
-    # Push them to an array
+    converted_braille
   end
 
 
