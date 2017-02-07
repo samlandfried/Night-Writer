@@ -3,10 +3,11 @@ class RosettaStone
   attr_accessor :english, :braille, :modifiers
 
   def initialize
-    @english = []
+    @english = " !',-.?abcdefghijklmnopqrstuvwxyz".split('')
     @braille = []
     @modifiers = []
   end
+
 
 
 end

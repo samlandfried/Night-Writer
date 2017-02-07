@@ -28,22 +28,21 @@ class NightWriterTest < Minitest::Test
 
     def test_braille_sub_arrays_contain_symbols
       skip
-      assert braille[0][0].instance_of? ("Symbol")
+      assert braille[0][0].instance_of? (Symbol)
     end
 
     def test_braille_array_contains_arrays
       skip
-      assert braille[0].instance_of? ("Array")
+      assert braille[0].instance_of? (Array)
     end
 
     def test_english_array_contains_strings
-      skip
-      assert english[0].instance_of? ("String")
+      assert english[0].instance_of? (String)
     end
 
     def test_modifiers_array_contains_symbols
       skip
-      assert modifiers[0].instance_of? ("Symbol")
+      assert modifiers[0].instance_of? (Symbol)
     end
 
     def test_it_matches_characters
