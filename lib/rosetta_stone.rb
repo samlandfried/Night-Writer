@@ -5,7 +5,7 @@ class RosettaStone
   def initialize
     @english = " !',-.?abcdefghijklmnopqrstuvwxyz".split('')
     @braille = convert_string_braille_to_symbol_braille
-    @modifiers = []
+    @modifiers = [[:e,:e,:r],[:r,:r,:f]]
     @symbol_braille = [:l, :r, :f, :e]
   end
 

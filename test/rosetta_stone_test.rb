@@ -7,17 +7,21 @@ require './lib/night_writer'
 require 'pry'
 
 class NightWriterTest < Minitest::Test
-  # describe "rosetta stone" do
-    attr_accessor :english, :braille, :modifiers, :rs
+
+  describe "rosetta stone" do
 
     def setup
       nw = NightWriter.new("input.txt", "output.txt")
       @rs = nw.rosetta_stone
+      rs.convert_string_braille_to_symbol_braille
 
       @english = rs.english
       @braille = rs.braille
       @modifiers = rs.modifiers
     end
+    
+    attr_accessor :english, :braille, :modifiers, :rs
+
 
     def test_it_has_3_arrays
       # binding.pry-byebug
@@ -27,12 +31,10 @@ class NightWriterTest < Minitest::Test
     end
 
     def test_braille_sub_arrays_contain_symbols
-      skip
       assert braille[0][0].instance_of? (Symbol)
     end
 
     def test_braille_array_contains_arrays
-      rs.convert_string_braille_to_symbol_braille
       assert braille[0].instance_of? (Array)
     end
 
@@ -41,8 +43,7 @@ class NightWriterTest < Minitest::Test
     end
 
     def test_modifiers_array_contains_symbols
-      skip
-      assert modifiers[0].instance_of? (Symbol)
+      assert modifiers[0][0].instance_of? (Symbol)
     end
 
     def test_it_matches_characters
@@ -56,7 +57,7 @@ class NightWriterTest < Minitest::Test
       assert_equal 33, braille.size
     end
 
-  # end
+  end
 
   describe "file IO" do
 
