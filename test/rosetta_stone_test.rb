@@ -63,12 +63,12 @@ class NightWriterTest < Minitest::Test
     end
 
     def test_it_makes_a_new_file
-      refute File.exist?("fake_file.txt")
+      refute File.exist?("data/fake_file.txt")
       nw = NightWriter.new("file.txt", "fake_file.txt")
       nw.write("Written!")
-      assert File.exist?("fake_file.txt")
-      File.delete("fake_file.txt")
-      refute File.exist?("fake_file.txt")
+      assert File.exist?("data/fake_file.txt")
+      File.delete("data/fake_file.txt")
+      refute File.exist?("data/fake_file.txt")
     end
 
   end

@@ -26,7 +26,7 @@ attr_reader :rosetta_stone, :input_path, :output_path
   #write method
   def write(translated)
     #a string will be passed into it and that string will be written to the file specified in the instantiation
-    file = File.open(output_path, "w")
+    file = File.open("data/" + output_path, "w")
     file.write translated
   end
 
