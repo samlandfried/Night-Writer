@@ -1,7 +1,14 @@
-require "./lib/night_writer"
 require "./lib/rosetta_stone"
 
 class Translator
+
+  attr_reader :english, :braille
+
+  def initialize
+    rs = RosettaStone.new
+    @english = rs.english
+    @braille = rs.braille
+  end
 
   def translate_braille_to_english braille
     #untranslated and translated variable

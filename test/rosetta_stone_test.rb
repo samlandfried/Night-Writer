@@ -89,13 +89,14 @@ class NightWriterTest < Minitest::Test
     end
 
     def test_it_translates_characters
-      skip
-      assert_equal "h", NightWriter.translator(english[14])
+      translation = nw.translator.translate_english_to_braille(english[14])
+      translation = nw.rosetta_stone.convert_symbol_braille_to_string_braille(translation) 
+      assert_equal "0.\n00\n..", translation
     end
 
     def test_it_adds_shift_character
       skip
-      assert_equal ["..0.\n..00\n.0.."], NightWriter.translator("H")
+      assert_equal ["..0.\n..00\n.0.."], nw.translator("H")
     end
 
     # def test_it_finds_errors
@@ -104,7 +105,7 @@ class NightWriterTest < Minitest::Test
 
     def it_counts_characters
       skip
-      assert_equal 1, NightWriter.translator("h")
+      assert_equal 1, nw.translator("h")
     end
 
   end
