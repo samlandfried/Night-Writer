@@ -8,12 +8,12 @@ require 'pry'
 
 class NightWriterTest < Minitest::Test
   # describe "rosetta stone" do
-    attr_accessor :english, :braille, :modifiers
+    attr_accessor :english, :braille, :modifiers, :rs
 
     def setup
       nw = NightWriter.new("input.txt", "output.txt")
-      rs = nw.rosetta_stone
-      # binding.pry
+      @rs = nw.rosetta_stone
+
       @english = rs.english
       @braille = rs.braille
       @modifiers = rs.modifiers
@@ -32,7 +32,7 @@ class NightWriterTest < Minitest::Test
     end
 
     def test_braille_array_contains_arrays
-      skip
+      rs.convert_string_braille_to_symbol_braille
       assert braille[0].instance_of? (Array)
     end
 
