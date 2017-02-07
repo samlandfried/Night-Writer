@@ -1,6 +1,11 @@
 class NightWriter
+attr_reader :rosetta_stone
 
+  def initialize(input_file, output_file)
+    @rosetta_stone = RosettaStone.new
+  end
   #instance variable called count
+
 
 
   #2 parameters names of input and output files

@@ -1,5 +1,15 @@
 class RosettaStone
 
+  attr_accessor :english, :braille, :modifiers
+
+  def initialize
+    @english = []
+    @braille = []
+    @modifiers = []
+  end
+
+
+end
   # Create 3 arrays as instance variables
     # English alphabet =  " !',-.?abcdefghijklmnopqrstuvwxyz".split('')
     # Braille alphabet = braille
@@ -30,6 +40,6 @@ class RosettaStone
     #return array
 
 
-end
+
 
 rs = RosettaStone.new
