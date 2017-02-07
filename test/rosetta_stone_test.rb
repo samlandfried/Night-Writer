@@ -58,20 +58,18 @@ class NightWriterTest < Minitest::Test
   describe "file IO" do
 
     def test_it_produces_a_string
-      skip
-      file = File.new("input.txt", "r")
-      assert file.instance_of? ("String")
+      file = File.new("data/input.txt", "r")
+      assert file.read.instance_of? (String)
     end
 
     def test_it_makes_a_new_file
-      skip
       refute File.exist?("fake_file.txt")
       nw = NightWriter.new("file.txt", "fake_file.txt")
+      nw.write("Written!")
       assert File.exist?("fake_file.txt")
       File.delete("fake_file.txt")
       refute File.exist?("fake_file.txt")
     end
-
 
   end
 

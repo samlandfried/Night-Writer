@@ -1,10 +1,12 @@
 class NightWriter
-attr_reader :rosetta_stone
+
+attr_reader :rosetta_stone, :input_path, :output_path
 
   def initialize(input_file, output_file)
     @rosetta_stone = RosettaStone.new
+    @input_path = input_file
+    @output_path = output_file
   end
-  #instance variable called count
 
 
 
@@ -22,9 +24,9 @@ attr_reader :rosetta_stone
   #return number of characters
 
   #write method
-  def write(output_file, translated)
+  def write(translated)
     #a string will be passed into it and that string will be written to the file specified in the instantiation
-    file = File.open(output_file, "w")
+    file = File.open(output_path, "w")
     file.write translated
   end
 
