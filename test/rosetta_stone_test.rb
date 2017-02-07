@@ -21,7 +21,7 @@ class NightWriterTest < Minitest::Test
       @braille = rs.braille
       @modifiers = rs.modifiers
     end
-    
+
     def test_it_has_3_arrays
       assert_kind_of Array, english
       assert_kind_of Array, braille
@@ -57,18 +57,24 @@ class NightWriterTest < Minitest::Test
 
   describe "file IO" do
 
+    attr_reader :file
+
+    def setup
+      @file = NightWriter.new("data/input.txt", "fake_file.txt")
+    end
+
     def test_it_produces_a_string
-      file = File.new("data/input.txt", "r")
-      assert file.read.instance_of? (String)
+      assert_kind_of String, file.open
     end
 
     def test_it_makes_a_new_file
       refute File.exist?("data/fake_file.txt")
-      nw = NightWriter.new("file.txt", "fake_file.txt")
-      nw.write("Written!")
+      file.write("Written!")
       assert File.exist?("data/fake_file.txt")
-      File.delete("data/fake_file.txt")
-      refute File.exist?("data/fake_file.txt")
+    end
+
+    def teardown
+      File.delete("data/fake_file.txt") if File.exist? ("data/fake_file.txt")
     end
 
   end

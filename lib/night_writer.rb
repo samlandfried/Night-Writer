@@ -13,8 +13,8 @@ attr_reader :rosetta_stone, :input_path, :output_path
   #2 parameters names of input and output files
 
 
-  def open(input_file)
-    file = File.open(input_file, "r")
+  def open
+    file = File.open(input_path, "r").read
     file
   end
 
