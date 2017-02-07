@@ -16,6 +16,8 @@ class RosettaStone
     # Loop lenth of array times
     braille = file.read.split("\n")
     33.times do
+
+    end
       # create subarr
       subarr = []
       # Loop 3 times
