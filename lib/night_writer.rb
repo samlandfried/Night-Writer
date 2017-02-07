@@ -1,6 +1,9 @@
+require "./lib/rosetta_stone"
+require "./lib/translator"
+
 class NightWriter
 
-attr_reader :rosetta_stone, :input_path, :output_path
+  attr_reader :rosetta_stone, :input_path, :output_path
 
   def initialize(input_file, output_file)
     @rosetta_stone = RosettaStone.new
@@ -14,7 +17,7 @@ attr_reader :rosetta_stone, :input_path, :output_path
 
 
   def open(input_file)
-    file = File.open(input_file, "r")
+    file = File.open(input_file, "r").read
     file
   end
 

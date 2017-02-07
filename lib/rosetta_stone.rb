@@ -13,7 +13,7 @@ class RosettaStone
   def convert_string_braille_to_symbol_braille
     file = File.open("./data/braille.txt")
     braille = file.read.split("\n")
-    converted_braille = []
+    symbol_braille = []
     # Loop number of braille pairs times
     (braille[0].length/2).times do |pair_index_position|
       subarr = []
@@ -25,9 +25,9 @@ class RosettaStone
         subarr << :e if pair == ".."
         subarr << :f if pair == "00"
       end
-      converted_braille << subarr
+      symbol_braille << subarr
     end
-    converted_braille
+    symbol_braille
   end
 
 
@@ -50,8 +50,3 @@ end
         #concat converted symbol to row i string
     #push rows into an array
     #return array
-
-
-
-
-rs = RosettaStone.new

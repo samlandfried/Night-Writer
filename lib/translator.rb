@@ -1,27 +1,32 @@
+require "./lib/night_writer"
+require "./lib/rosetta_stone"
+
 class Translator
 
   def initialize untranslated
 
   end
 
-  def translate_braille_to_english
+  def translate_braille_to_english braille
     #untranslated and translated variable
+    untranslated = []
+
     # An empty array to hold the result
     # Iterate over untranslated
       # Use rosetta_stone to find equivalent value
       # Shovel new value into storage array
     # Convert storage into a string
     # Return string
+    english
   end
 
-  #translate english to braille
-    #untranslated string
-    #translated = []
-    #Iterate over untranslated
-      #use rosetta_stone to find equivalent value
-      #add value to translated
-    #convert translated back to string braille
-    #return translated after iteration
+  def translate_english_to_braille string_to_translate
+    characters = string_to_translate.split("")
 
+    characters.map do |char|
+      alphabet_position = english.index(char) 
+      braille[alphabet_position]
+    end 
+  end
 
 end
