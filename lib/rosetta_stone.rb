@@ -1,6 +1,6 @@
 class RosettaStone
 
-  attr_accessor :english, :braille, :modifiers
+  attr_reader :english, :braille, :modifiers
 
   def initialize
     @english = " !',-.?abcdefghijklmnopqrstuvwxyz".split('')

@@ -4,7 +4,7 @@ require 'minitest/autorun'
 require 'minitest/emoji'
 require './lib/rosetta_stone'
 require './lib/night_writer'
-require 'pry'
+require './lib/translator.rb'
 
 class NightWriterTest < Minitest::Test
 
@@ -73,7 +73,18 @@ class NightWriterTest < Minitest::Test
 
   end
 
-  describe "English to Braille translation" do # Sam does this
+  describe "English to Braille translation" do
+
+    attr_accessor :english, :braille, :modifiers, :rs
+
+    def setup
+      nw = NightWriter.new("input.txt", "output.txt")
+
+      @english = nw.rosetta_stone.english
+      @braille = nw.rosetta_stone.braille
+      @modifiers = nw.rosetta_stone.modifiers
+      require "pry"; binding.pry
+    end
 
     def test_it_outputs_braille
       skip
