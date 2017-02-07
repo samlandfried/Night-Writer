@@ -29,7 +29,6 @@ class RosettaStone
     symbol_braille
   end
 
-  # [[:e, :f, :r], [:r, :f, :f], ...]
   def convert_symbol_braille_to_string_braille(symbol_braille)
     rows = ["","",""]
 
@@ -40,29 +39,11 @@ class RosettaStone
         rows[row] += ".0" if :r == symbol
         rows[row] += ".." if :e == symbol
         rows[row] += "00" if :f == symbol
-        # require "pry"; binding.pry
       end
     end
 
     rows = rows.join("\n")
     rows
   end
-  # Braille alphabet = braille
-
-  # Modifiers = define from somewhere
-
-  # Create four symbols :l, :r, :f, :e
-
-  #convert symbol braille to string braille
-  #input is an array of symbol braille elements
-  #row 1 string
-  #row 2 string
-  #row 3 string
-  #iterate over input
-  #iterate over symbol braille elements
-  #convert the symbols in row i using rosetta_stone
-  #concat converted symbol to row i string
-  #push rows into an array
-  #return array
 
 end

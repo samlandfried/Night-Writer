@@ -10,26 +10,23 @@ class Translator
     @braille = rs.braille
   end
 
-  def translate_braille_to_english braille
-    #untranslated and translated variable
-    untranslated = []
+  def translate_symbol_braille_to_english braille_to_translate
 
-    # An empty array to hold the result
-    # Iterate over untranslated
-      # Use rosetta_stone to find equivalent value
-      # Shovel new value into storage array
-    # Convert storage into a string
-    # Return string
-    english
+    braille_to_translate.map! do |char|
+      alphabet_position = braille.index(char)
+      require "pry"; binding.pry
+      english[alphabet_position]
+    end
+    braille_to_translate.join
   end
 
   def translate_english_to_braille string_to_translate
     characters = string_to_translate.split("")
 
     characters.map do |char|
-      alphabet_position = english.index(char) 
+      alphabet_position = english.index(char)
       braille[alphabet_position]
-    end 
+    end
   end
 
 end

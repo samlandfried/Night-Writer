@@ -96,7 +96,7 @@ class NightWriterTest < Minitest::Test
 
     def test_it_adds_shift_character
       skip
-      assert_equal ["..0.\n..00\n.0.."], nw.translator("H")
+      assert_equal "..0.\n..00\n.0..", nw.translator("H")
     end
 
     # def test_it_finds_errors
@@ -110,11 +110,17 @@ class NightWriterTest < Minitest::Test
 
   end
 
-  describe "Braille to English translation" do # Natalie does this
+  describe "Symbol-Braille to English translation" do
+    attr_reader :nw, :english, :braille
+
+    def setup
+      @nw = NightWriter.new("input.txt", "output.txt")
+      @english = nw.rosetta_stone.english
+      @braille = nw.rosetta_stone.braille
+    end
 
     def test_it_outputs_english
-      skip
-      assert_equal "h", NightWriter.translator[:l, :f, :e]
+      assert_equal english[14], nw.translator.translate_symbol_braille_to_english([[:l, :f, :e]])
     end
 
     def test_it_translates_characters
