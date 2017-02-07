@@ -10,6 +10,8 @@ class NightWriterTest < Minitest::Test
 
   describe "rosetta stone" do
 
+    attr_accessor :english, :braille, :modifiers, :rs
+
     def setup
       nw = NightWriter.new("input.txt", "output.txt")
       @rs = nw.rosetta_stone
@@ -20,11 +22,7 @@ class NightWriterTest < Minitest::Test
       @modifiers = rs.modifiers
     end
     
-    attr_accessor :english, :braille, :modifiers, :rs
-
-
     def test_it_has_3_arrays
-      # binding.pry-byebug
       assert english.instance_of? (Array)
       assert braille.instance_of? (Array)
       assert modifiers.instance_of? (Array)
@@ -47,13 +45,11 @@ class NightWriterTest < Minitest::Test
     end
 
     def test_it_matches_characters
-      skip
       assert_equal "h", english[14]
       assert_equal [:l,:f,:e], braille[14]
     end
 
     def test_braille_array_has_33_elements
-      skip
       assert_equal 33, braille.size
     end
 
