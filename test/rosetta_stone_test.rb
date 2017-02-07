@@ -23,25 +23,25 @@ class NightWriterTest < Minitest::Test
     end
     
     def test_it_has_3_arrays
-      assert english.instance_of? (Array)
-      assert braille.instance_of? (Array)
-      assert modifiers.instance_of? (Array)
-    end
-
-    def test_braille_sub_arrays_contain_symbols
-      assert braille[0][0].instance_of? (Symbol)
+      assert_kind_of Array, english
+      assert_kind_of Array, braille
+      assert_kind_of Array, modifiers
     end
 
     def test_braille_array_contains_arrays
-      assert braille[0].instance_of? (Array)
+      assert_includes braille, [:l,:f,:e]
+    end
+
+    def test_braille_sub_arrays_contain_symbols
+      assert_includes braille[0], :e
     end
 
     def test_english_array_contains_strings
-      assert english[0].instance_of? (String)
+      assert_kind_of String, english.first
     end
 
     def test_modifiers_array_contains_symbols
-      assert modifiers[0][0].instance_of? (Symbol)
+      assert_kind_of Symbol, modifiers.first[0]
     end
 
     def test_it_matches_characters
@@ -83,7 +83,6 @@ class NightWriterTest < Minitest::Test
       @english = nw.rosetta_stone.english
       @braille = nw.rosetta_stone.braille
       @modifiers = nw.rosetta_stone.modifiers
-      require "pry"; binding.pry
     end
 
     def test_it_outputs_braille
