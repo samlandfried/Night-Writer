@@ -31,7 +31,10 @@ attr_reader :rosetta_stone, :input_path, :output_path
   end
 
   #print method
-  #print to consule output file name and count method
+  def print_to_console
+    #print to consule output file name and count method
+    print "Message"
+  end
 
 end
 

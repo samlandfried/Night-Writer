@@ -74,14 +74,14 @@ class NightWriterTest < Minitest::Test
     end
 
     def teardown
-      File.delete("data/fake_file.txt") if File.exist? ("data/fake_file.txt")
+      File.delete("data/fake_file.txt") while File.exist? ("data/fake_file.txt")
     end
 
   end
 
   describe "English to Braille translation" do
 
-    attr_accessor :english, :braille, :modifiers, :rs
+    attr_reader :english, :braille, :modifiers, :rs
 
     def setup
       nw = NightWriter.new("input.txt", "output.txt")
@@ -147,6 +147,17 @@ class NightWriterTest < Minitest::Test
   end
 
   describe "command line" do
+
+    attr_reader :nw
+    def setup
+      @nw = NightWriter.new("data/input.txt", "output.txt")
+    end
+
+    def test_it_prints
+      assert_output("Message") do 
+        nw.print_to_console
+      end
+    end
 
     def test_it_includes_a_file_name
       skip
