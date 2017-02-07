@@ -3,10 +3,6 @@ require "./lib/rosetta_stone"
 
 class Translator
 
-  def initialize untranslated
-
-  end
-
   def translate_braille_to_english braille
     #untranslated and translated variable
     untranslated = []

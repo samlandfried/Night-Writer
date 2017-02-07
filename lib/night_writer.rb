@@ -3,10 +3,11 @@ require "./lib/translator"
 
 class NightWriter
 
-  attr_reader :rosetta_stone, :input_path, :output_path
+  attr_reader :rosetta_stone, :translator, :input_path, :output_path
 
   def initialize(input_file, output_file)
     @rosetta_stone = RosettaStone.new
+    @translator = Translator.new
     @input_path = input_file
     @output_path = output_file
   end
