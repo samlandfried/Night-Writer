@@ -20,7 +20,7 @@ class NightWriterTest < Minitest::Test
       @braille = rs.braille
       @modifiers = rs.modifiers
     end
-    
+
     def test_it_has_3_arrays
       assert english.instance_of? (Array)
       assert braille.instance_of? (Array)
@@ -89,14 +89,19 @@ class NightWriterTest < Minitest::Test
     end
 
     def test_it_translates_characters
-      translation = nw.translator.translate_english_to_braille(english[14])
-      translation = nw.rosetta_stone.convert_symbol_braille_to_string_braille(translation) 
+      translation = nw.translator.translate_english_to_symbol_braille(english[14])
+      translation = nw.rosetta_stone.convert_symbol_braille_to_string_braille(translation)
       assert_equal "0.\n00\n..", translation
+
     end
 
     def test_it_adds_shift_character
-      skip
-      assert_equal "..0.\n..00\n.0..", nw.translator("H")
+
+      assert_equal [[:e, :e, :r], [:l, :f, :e]], nw.translator.translate_english_to_symbol_braille("H")
+    end
+
+    def test_it_adds_number_character
+      assert_equal [[:r, :r, :f],[:l, :f, :e]],nw.translator.translate_english_to_symbol_braille("8")
     end
 
     # def test_it_finds_errors
@@ -124,8 +129,7 @@ class NightWriterTest < Minitest::Test
     end
 
     def test_it_capitalizes
-      skip
-      assert_equal "H", NightWriter.translator[[:e, :e, :r][:l, :f, :e]]
+      assert_equal "H", nw.translator.translate_symbol_braille_to_english([[:e, :e, :r],[:l, :f, :e]])
     end
 
     def test_it_finds_errors
