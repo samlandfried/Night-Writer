@@ -7,11 +7,11 @@ class NightWriter
 
   attr_accessor :count
 
-  def initialize(input_file, output_file)
+  def initialize(input_file = "data/input.txt", output_file = "output.txt")
     @rosetta_stone = RosettaStone.new
     @translator = Translator.new
-    @input_path = input_file
-    @output_path = output_file
+    @input_path = ARGV[0] || input_file
+    @output_path = ARGV[1] || output_file
     @count = 0
   end
 
