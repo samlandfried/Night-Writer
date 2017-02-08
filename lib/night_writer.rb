@@ -47,7 +47,20 @@ end
 
 nw = NightWriter.new
 file = nw.open nw.input_path
-symbol_braille = nw.translator.translate_english_to_symbol_braille(file)
-string_braille = nw.rosetta_stone.convert_symbol_braille_to_string_braille(symbol_braille)
-nw.write_file string_braille
+braille = true
+file.split("").each do |char|
+  braille_chars = [".","0","\n"]
+  unless braille_chars.include? (char)
+    braille = false
+  end
+end
+
+if braille
+  symbol_braille = nw.rosetta_stone.convert_string_braille_to_symbol_braille(file)
+  translated_message = nw.translator.translate_symbol_braille_to_english(symbol_braille)
+else
+  symbol_braille = nw.translator.translate_english_to_symbol_braille(file)
+  translated_message = nw.rosetta_stone.convert_symbol_braille_to_string_braille(symbol_braille)
+end
+nw.write_file translated_message
 nw.print_output
