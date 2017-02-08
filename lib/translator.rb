@@ -25,7 +25,7 @@ class Translator
         flag = "number"
         skip = true
         next
-      elsif skip = false
+      elsif skip == false
         flag = "lower_case"
       end
 
@@ -54,6 +54,7 @@ class Translator
     translated = []
     numbers = "1234567890".split("")
 
+    # require "pry"; binding.pry
     characters.each do |char|
       if char.upcase == char && !numbers.include?(char)
         alphabet_position = english.index(char.downcase)

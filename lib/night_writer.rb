@@ -21,7 +21,7 @@ class NightWriter
 
 
   def open(input_file)
-    file = File.open(input_file, "r").read
+    file = File.open("data/" + input_file, "r").read
     file
   end
 
@@ -45,7 +45,9 @@ class NightWriter
   # Created 'braille.txt' containing 256 characters
 end
 
-# nw = NightWriter.new
-# file = nw.open file.txt
-# translated = translator.translate (file)
-# nw.write output.txt, translated
+nw = NightWriter.new
+file = nw.open nw.input_path
+symbol_braille = nw.translator.translate_english_to_symbol_braille(file)
+string_braille = nw.rosetta_stone.convert_symbol_braille_to_string_braille(symbol_braille)
+nw.write_file string_braille
+nw.print_output
