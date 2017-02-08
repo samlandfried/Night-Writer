@@ -32,6 +32,7 @@ class NightWriter
   #write method
   def write_file(translated)
     @count = translated.length
+    translated = split_long_english(translated).join("\n") if translated.length > 80
     file = File.open("data/" + output_path, "w")
     file.write translated
   end
@@ -43,6 +44,16 @@ class NightWriter
   #print method
   #print to consule output file name and count method
   # Created 'braille.txt' containing 256 characters
+  def split_long_english string, split = []
+    if string.length > 80
+      split << string[0..79]
+      split_long_english string[80..-1], split
+    else
+      split << string
+    end
+    split
+  end
+
 end
 
 nw = NightWriter.new
