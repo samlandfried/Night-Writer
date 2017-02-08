@@ -123,11 +123,6 @@ class NightWriterTest < Minitest::Test
       assert_equal english[14], nw.translator.translate_symbol_braille_to_english([[:l, :f, :e]])
     end
 
-    def test_it_translates_characters
-      skip
-      assert_equal english[14], NightWriter.translator[:l, :f, :e]
-    end
-
     def test_it_capitalizes
       skip
       assert_equal "H", NightWriter.translator[[:e, :e, :r][:l, :f, :e]]
