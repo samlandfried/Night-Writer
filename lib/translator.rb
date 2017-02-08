@@ -56,7 +56,10 @@ class Translator
         translated << modifiers[0]
         translated << braille[alphabet_position]
       elsif numbers.include? (char)
-        number_position = char + 7
+        #### It was trying to add 7 to "1", a string version of 1, so I added .to_i
+        #### Also, right now, it looks like 7 is the wrong value to add. Let's try 6 and 8. 
+        #### Also, what will happen when we try to retrieve the appropriate index position for "0"?
+        number_position = char.to_i + 7
         translated << modifiers[1]
         translated << braille[number_position + 7]
       else
