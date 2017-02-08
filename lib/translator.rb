@@ -45,13 +45,22 @@ class Translator
     translated.join
   end
 
-  def translate_english_to_braille string_to_translate
+  def translate_english_to_symbol_braille string_to_translate
     characters = string_to_translate.split("")
+    translated = []
+    numbers = "1234567890".split("")
 
-    characters.map do |char|
-      alphabet_position = english.index(char)
-      braille[alphabet_position]
+    characters.each do |char|
+      if char.upcase == char
+        translated << modifiers[0] if char.upcase == char
+      elsif numbers.include? (char)
+        translated << modifiers[1] if numbers.include? char
+      end
+      alphabet_position = english.index(char.downcase)
+      translated << braille[alphabet_position]
     end
+
+    translated
   end
 
 end
