@@ -64,7 +64,7 @@ class NightWriterTest < Minitest::Test
     def test_it_makes_a_new_file
       refute File.exist?("data/fake_file.txt")
       nw = NightWriter.new("file.txt", "fake_file.txt")
-      nw.write("Written!")
+      nw.write_file("Written!")
       assert File.exist?("data/fake_file.txt")
       File.delete("data/fake_file.txt")
       refute File.exist?("data/fake_file.txt")
@@ -108,11 +108,6 @@ class NightWriterTest < Minitest::Test
 
     # end
 
-    def it_counts_characters
-      skip
-      assert_equal 1, nw.translator("h")
-    end
-
   end
 
   describe "Symbol-Braille to English translation" do
@@ -140,32 +135,23 @@ class NightWriterTest < Minitest::Test
       skip
       #look into this later
     end
-
-    def test_it_counts_characters
-      skip
-      assert_equal 1, NightWriter([:l, :f, :e]).length
-    end
-
   end
 
   describe "command line" do
+    attr_reader :nw
 
-    def test_it_includes_a_file_name
-      skip
+    def setup
+      @nw = NightWriter.new("input.txt", "output.txt")
+    end
+
+    def test_it_prints
       printed = nw.print_output
       assert printed.include?("output.txt")
     end
 
-    def test_it_puts
-      skip
-      # If there's time, investigte spys
-    end
-
-
     def test_it_includes_a_character_count
-      skip
-      printed = nw.print_output
-      assert printed.include?("4")
+      printed = nw.write_file("goop")
+      assert nw.print_output.include?("4")
     end
 
   end

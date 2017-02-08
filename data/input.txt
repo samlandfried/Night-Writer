@@ -1,1 +1,1 @@
-"goop"
+goop
