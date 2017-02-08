@@ -92,11 +92,16 @@ class NightWriterTest < Minitest::Test
       translation = nw.translator.translate_english_to_symbol_braille(english[14])
       translation = nw.rosetta_stone.convert_symbol_braille_to_string_braille(translation)
       assert_equal "0.\n00\n..", translation
+
     end
 
     def test_it_adds_shift_character
 
       assert_equal [[:e, :e, :r], [:l, :f, :e]], nw.translator.translate_english_to_symbol_braille("H")
+    end
+
+    def test_it_adds_number_character
+      assert_equal [[:r, :r, :f],[:l, :f, :e]],nw.translator.translate_english_to_symbol_braille("8")
     end
 
     # def test_it_finds_errors

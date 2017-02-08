@@ -51,13 +51,18 @@ class Translator
     numbers = "1234567890".split("")
 
     characters.each do |char|
-      if char.upcase == char
-        translated << modifiers[0] if char.upcase == char
+      if char.upcase == char && !numbers.include?(char)
+        alphabet_position = english.index(char.downcase)
+        translated << modifiers[0]
+        translated << braille[alphabet_position]
       elsif numbers.include? (char)
-        translated << modifiers[1] if numbers.include? char
+        number_position = char + 7
+        translated << modifiers[1]
+        translated << braille[number_position + 7]
+      else
+        alphabet_position = english.index(char.downcase)
+        translated << braille[alphabet_position]
       end
-      alphabet_position = english.index(char.downcase)
-      translated << braille[alphabet_position]
     end
 
     translated
