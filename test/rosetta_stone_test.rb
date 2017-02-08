@@ -132,6 +132,10 @@ class NightWriterTest < Minitest::Test
       assert_equal "H", nw.translator.translate_symbol_braille_to_english([[:e, :e, :r],[:l, :f, :e]])
     end
 
+    def test_it_adds_number_character
+      assert_equal "8",nw.translator.translate_symbol_braille_to_english([[:r, :r, :f],[:l, :f, :e]])
+    end
+
     def test_it_finds_errors
       skip
       #look into this later

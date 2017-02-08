@@ -39,7 +39,11 @@ class Translator
         translated << english[alphabet_position].upcase
       when "number"
         alphabet_position = braille.index(char)
-        translated << (alphabet_position - 6).to_s
+        if char == "0"
+          translated << "0"
+        else
+          translated << (alphabet_position - 6).to_s
+        end
       end
     end
     translated.join
