@@ -32,7 +32,6 @@ class NightWriter
   #write method
   def write_file(translated)
     @count = translated.length
-    translated = split_long_english(translated).join("\n") if translated.length > 80
     file = File.open("data/" + output_path, "w")
     file.write translated
   end
@@ -45,13 +44,40 @@ class NightWriter
   #print to consule output file name and count method
   # Created 'braille.txt' containing 256 characters
   def split_long_english string, split = []
-    if string.length > 80
-      split << string[0..79]
-      split_long_english string[80..-1], split
+    if string.length > 40
+      split << string[0..39]
+      split_long_english string[40..-1], split
     else
       split << string
     end
     split
+  end
+
+  def split_long_braille string
+    
+    rows = string.split("\n")
+    3.times do | i|
+      (rows[i].length / 80).times do |e|
+        rows[i].insert((((e + 1) * 80) + e), "\n")
+      end
+    end
+
+    rows.map! do |row| 
+      row.split("\n")
+    end
+    new_rows = [[],[],[]]
+
+    rows[0].length.times do |line|
+      3.times do |i|
+        new_rows[line/3] << rows[i][line]
+      end
+    end
+
+    new_rows.map! do |row|
+      row.join("\n")
+    end
+
+    new_rows.join("\n")
   end
 
 end
@@ -69,9 +95,11 @@ end
 if braille
   symbol_braille = nw.rosetta_stone.convert_string_braille_to_symbol_braille(file)
   translated_message = nw.translator.translate_symbol_braille_to_english(symbol_braille)
+  translated_message = nw.split_long_english(translated_message).join("\n") if translated_message.length > 40
 else
   symbol_braille = nw.translator.translate_english_to_symbol_braille(file)
   translated_message = nw.rosetta_stone.convert_symbol_braille_to_string_braille(symbol_braille)
+  translated_message = nw.split_long_braille(translated_message) if translated_message.length > 243
 end
 nw.write_file translated_message
 nw.print_output
