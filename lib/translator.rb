@@ -39,7 +39,8 @@ class Translator
         translated << english[alphabet_position].upcase
       when "number"
         alphabet_position = braille.index(char)
-        if char == "0"
+        # require "pry"; binding.pry
+        if char == [:r,:f,:e]
           translated << "0"
         else
           translated << (alphabet_position - 6).to_s
@@ -68,6 +69,7 @@ class Translator
         number_position = 16 if char == "0"
         translated << modifiers[1]
         translated << braille[number_position]
+        # require "pry"; binding.pry
       else
         alphabet_position = english.index(char.downcase)
         translated << braille[alphabet_position]

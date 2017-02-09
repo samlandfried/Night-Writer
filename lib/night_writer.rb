@@ -7,7 +7,7 @@ class NightWriter
 
   attr_accessor :count
 
-  def initialize(input_file = "data/input.txt", output_file = "output.txt")
+  def initialize(input_file = "input.txt", output_file = "output.txt")
     @rosetta_stone = RosettaStone.new
     @translator = Translator.new
     @input_path = ARGV[0] || input_file
@@ -65,11 +65,12 @@ class NightWriter
     rows.map! do |row| 
       row.split("\n")
     end
+
     new_rows = [[],[],[]]
 
-    rows[0].length.times do |line|
+    rows[0].length.times do |l|
       3.times do |i|
-        new_rows[line/3] << rows[i][line]
+        new_rows[l/3] << rows[i][l]
       end
     end
 
